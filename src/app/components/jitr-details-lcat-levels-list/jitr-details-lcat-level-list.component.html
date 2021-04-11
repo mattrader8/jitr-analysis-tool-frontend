@@ -1,0 +1,41 @@
+<h3> JITR Labor Category Levels </h3>
+<br>
+<div>
+    <input type="text" placeholder="Search..." (keyup)="quickSearch()" [(ngModel)]="searchValue">
+    <button (click)="clearFilters()" class="btn"> Reset Filters </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field class="add-lcat-levels">
+        <mat-label>Add Labor Category Levels</mat-label>
+        <select matNativeControl [(ngModel)]="lcatLevel" name="lcatLevel">
+            <option *ngFor="let lcatLevel of lcatLevels"
+            [ngValue]="lcatLevel"
+            [disabled]="lcatLevel.disabled"> {{ lcatLevel.lcatLevelDescription }}
+            </option>
+        </select>
+    </mat-form-field>
+    <button (click)="onSubmitLcatLevel()" class="btn">Add</button>
+</div>
+<div>
+    <ag-grid-angular
+    #agGrid
+    domLayout="autoHeight"
+    style="width: 400px"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (filterChanged)="onFilterChanged($event)"
+    >
+    </ag-grid-angular>
+</div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+          <label><b>LCAT Level Count:</b> &nbsp;</label> <b>{{ lcatLevelCount }}</b>
+          &nbsp;
+          &nbsp;
+          <label><b>LCAT Level Percent:</b> &nbsp;</label> <b>{{ lcatLevelPercent }}%</b>
+        </ul>
+    </nav>
+</div>

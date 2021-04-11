@@ -1,0 +1,48 @@
+<h3 class="jitr-home-title"> JITR Home </h3>
+<br>
+<h3> JITR List </h3>
+<br>
+<div>
+    <input type="text" placeholder="Search..." (keyup)="quickSearch()" [(ngModel)]="searchValue">
+    <button (click)="clearFilters()" class="btn"> Reset Filters </button>
+</div>
+<br>
+<div>
+    <ag-grid-angular
+    #agGrid
+    style="width: 1200px; height: 470px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (filterChanged)="onFilterChanged($event)"
+    >
+    </ag-grid-angular>
+</div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+          <label><b>JITR Count:</b> &nbsp;</label> <b>{{ jitrCount }}</b>
+          &nbsp;
+          &nbsp;
+          <label><b>JITR Percent:</b> &nbsp;</label> <b>{{ jitrPercent }}%</b>
+        </ul>
+    </nav>
+</div>
+<br>
+<br>
+<div>
+    <app-jitr-lcats-list></app-jitr-lcats-list>
+</div>
+<br>
+<br>
+<div>
+    <app-jitr-lcat-levels-list></app-jitr-lcat-levels-list>
+</div>
+<br>
+<br>
+<div>
+    <app-declined-jitr-list></app-declined-jitr-list>
+</div>

@@ -1,0 +1,41 @@
+<h3> JITR Labor Categories </h3>
+<br>
+<div>
+    <input type="text" placeholder="Search..." (keyup)="quickSearch()" [(ngModel)]="searchValue">
+    <button (click)="clearFilters()" class="btn"> Reset Filters </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field class="add-lcats">
+        <mat-label>Add Labor Categories</mat-label>
+        <select matNativeControl [(ngModel)]="lcat" name="lcat">
+            <option *ngFor="let lcat of lcats"
+            [ngValue]="lcat"
+            [disabled]="lcat.disabled"> {{ lcat.lcatDescription }}
+            </option>
+        </select>
+    </mat-form-field>
+    <button (click)="onSubmitLcat()" class="btn">Add</button>
+</div>
+<div>
+    <ag-grid-angular
+    #agGrid
+    domLayout="autoHeight"
+    style="width: 300px"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (filterChanged)="onFilterChanged($event)"
+    >
+    </ag-grid-angular>
+</div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+          <label><b>LCAT Count:</b> &nbsp;</label> <b>{{ lcatCount }}</b>
+          &nbsp;
+          &nbsp;
+          <label><b>LCAT Percent:</b> &nbsp;</label> <b>{{ lcatPercent }}%</b>
+        </ul>
+    </nav>
+</div>

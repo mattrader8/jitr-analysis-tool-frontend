@@ -1,0 +1,55 @@
+.add-jitr-page-title {
+    display: block;
+    text-align: center;
+}
+
+.form {
+    display: block;
+    text-align: center;
+}
+
+.add-jitr-form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.mat-form-field {
+    padding: 5px;
+    width: 300px !important;
+}
+
+.mat-icon {
+    float: right;
+}
+
+.submit-button {
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: darkgrey;
+    padding: 2px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.submit-button:hover {
+    background: gray;
+}
+
+.cancel-button {
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(206, 33, 43);
+    padding: 2px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.cancel-button:hover {
+    background: rgb(170, 0, 0);
+}

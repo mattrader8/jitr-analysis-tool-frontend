@@ -1,0 +1,43 @@
+<h3 class="jitr-details-title"> JITR Details </h3>
+<br>
+<button mat-icon-button (click)="returnToJITRList()" type="button">
+    <mat-icon class="mat-icon" matTooltip="Return to JITR Home">arrow_back</mat-icon> &nbsp;&nbsp;
+    <mat-label class>Return</mat-label>
+</button>
+<br>
+<br>
+<br>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>JITR Number</th>
+                <th>JITR Date</th>
+                <th>Number of FTE</th>
+                <th>JITR Status</th>
+                <th>JITR Rating</th>
+                <th>JITR Organization</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> {{jitr.jitrNumber}} </td>
+                <td> {{jitr.jitrDate | date:'shortDate'}} </td>
+                <td> {{jitr.numberOfFTE}} </td>
+                <td> {{jitr.jitrStatus?.statusDescription}} </td>
+                <td> {{jitr.jitrRating?.ratingDescription}} </td>
+                <td> {{jitr.jitrOrganization?.jitrOrganizationName}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<div>
+    <app-jitr-details-lcats-list [jitr]='jitr' [jitrNumber]='jitrNumber'></app-jitr-details-lcats-list>
+</div>
+<br>
+<br>
+<div>
+    <app-jitr-details-lcat-level-list [jitr]='jitr' [jitrNumber]='jitrNumber'></app-jitr-details-lcat-level-list>
+</div>

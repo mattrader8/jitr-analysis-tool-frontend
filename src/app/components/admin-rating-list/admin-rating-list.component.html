@@ -1,0 +1,25 @@
+<h3> JITR Ratings </h3>
+<br>
+<div>
+    <ag-grid-angular
+    #agGrid
+    style="width: 200px; height: 275px"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+</div>
+<br>
+<div class="form">
+    <form class="add-jitr-rating-form" (ngSubmit)="onSubmitJitrRating()">
+        <mat-form-field class="mat-form">
+            <mat-label>Enter New Rating</mat-label>
+            <input matInput type="text" id="jitrRatingDescription"
+            [(ngModel)]="jitrRating.ratingDescription" name="jitrRatingDescription">
+        </mat-form-field>
+        <button class="btn">Add</button>
+    </form>
+</div>

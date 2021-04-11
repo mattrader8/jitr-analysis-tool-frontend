@@ -1,0 +1,34 @@
+<h3> Cost Variance on Declined JITRs </h3>
+<br>
+<div>
+    <input type="text" placeholder="Search..." (keyup)="quickSearch()" [(ngModel)]="searchValue">
+    <button (click)="clearFilters()" class="btn"> Reset Filters </button>
+</div>
+<br>
+<div>
+    <ag-grid-angular
+    #agGrid
+    style="width: 1200px; height: 470px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (filterChanged)="onFilterChanged($event)"
+    >
+    </ag-grid-angular>
+</div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+          <label><b>JITR Count:</b> &nbsp;</label> <b>{{ jitrCount }}</b>
+          &nbsp;
+          &nbsp;
+          <label><b>JITR Percent:</b> &nbsp;</label> <b>{{ jitrPercent }}%</b>
+          &nbsp;
+          &nbsp;
+          <label><b>Average Cost Difference:</b> &nbsp;</label> <b>{{ averageCostDifference | currency }}</b>
+        </ul>
+    </nav>
+</div>

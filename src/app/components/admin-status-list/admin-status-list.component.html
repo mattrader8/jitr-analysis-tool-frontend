@@ -1,0 +1,25 @@
+<h3> JITR Statuses </h3>
+<br>
+<div>
+    <ag-grid-angular
+    #agGrid
+    style="width: 200px; height: 275px"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+</div>
+<br>
+<div class="form">
+    <form class="add-jitr-status-form" (ngSubmit)="onSubmitJitrStatus()">
+        <mat-form-field class="mat-form">
+            <mat-label>Enter New Status</mat-label>
+            <input matInput type="text" id="jitrStatusDescription"
+            [(ngModel)]="jitrStatus.statusDescription" name="jitrStatusDescription">
+        </mat-form-field>
+        <button class="btn">Add</button>
+    </form>
+</div>
