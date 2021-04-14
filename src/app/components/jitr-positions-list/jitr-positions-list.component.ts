@@ -2,16 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
-import { JitrLcats } from 'src/app/models/jitr-lcats.model';
-import { JitrLcatsService } from 'src/app/services/jitr-lcats.service';
+import { JitrPositions } from 'src/app/models/jitr-positions.model';
+import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { RouterLinkRendererComponent } from '../router-link-renderer/router-link-renderer.component';
 
 @Component({
-  selector: 'app-jitr-lcats-list',
-  templateUrl: './jitr-lcats-list.component.html',
-  styleUrls: ['./jitr-lcats-list.component.scss']
+  selector: 'app-jitr-positions-list',
+  templateUrl: './jitr-positions-list.component.html',
+  styleUrls: ['./jitr-positions-list.component.scss']
 })
-export class JitrLcatsListComponent implements OnInit {
+export class JitrPositionsListComponent implements OnInit {
 
   @ViewChild('agGrid') agGrid: AgGridAngular;
   
@@ -19,13 +19,13 @@ export class JitrLcatsListComponent implements OnInit {
   gridApi: any;
   gridColumnApi: any;
   searchValue: any;
-  lcatCount: number;
-  totalLcatCount: number;
-  lcatPercent: number;
+  positionCount: number;
+  totalPositionCount: number;
+  positionPercent: number;
 
-  rowData: JitrLcats[]
+  rowData: JitrPositions[]
 
-  constructor(private jitrLcatsService: JitrLcatsService,
+  constructor(private jitrPositionsService: JitrPositionsService,
     private router: Router,
     private titleService: Title) {
       this.titleService.setTitle("JITR Home");
@@ -39,7 +39,8 @@ export class JitrLcatsListComponent implements OnInit {
             inRouterLink: '/jitr-details'
           }
       },
-      { headerName: 'Labor Category', field: 'lcat.lcatDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Labor Category', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Labor Category Level', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'JITR Status', field: 'jitr.jitrStatus.statusDescription', sortable: true, filter: 'agTextColumnFilter' }
     ]
   }
@@ -47,10 +48,10 @@ export class JitrLcatsListComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.gridColumnApi;
-    this.jitrLcatsService.getJitrLcatsList().subscribe(data => {
+    this.jitrPositionsService.getJitrPositionsList().subscribe(data => {
       params.api.setRowData(data);
-      this.totalLcatCount = this.getRowCount();
-      this.lcatPercent = this.getPercent();
+      this.totalPositionCount = this.getRowCount();
+      this.positionPercent = this.getPercent();
     })
     params.api.sizeColumnsToFit();
   }
@@ -78,13 +79,13 @@ export class JitrLcatsListComponent implements OnInit {
   }
   
   getRowCount() {
-    this.lcatCount = this.gridApi.getDisplayedRowCount();
-    return this.lcatCount;
+    this.positionCount = this.gridApi.getDisplayedRowCount();
+    return this.positionCount;
   }
 
   getPercent() {
     let rowCount = this.getRowCount(); 
-    this.lcatPercent = Math.round((rowCount / this.totalLcatCount) * 100);
-    return this.lcatPercent;
+    this.positionPercent = Math.round((rowCount / this.totalPositionCount) * 100);
+    return this.positionPercent;
   }
 }

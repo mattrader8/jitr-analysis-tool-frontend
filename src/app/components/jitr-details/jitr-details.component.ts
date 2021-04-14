@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AgGridAngular } from 'ag-grid-angular';
-import { JitrLcatLevels } from 'src/app/models/jitr-lcat-levels.model';
-import { JitrLcats } from 'src/app/models/jitr-lcats.model';
 import { Jitr } from 'src/app/models/jitr.model';
 import { JitrService } from 'src/app/services/jitr.service';
 
@@ -16,10 +13,6 @@ export class JitrDetailsComponent implements OnInit {
   
   jitrNumber: number;
   jitr: Jitr = new Jitr;
-
-  jitrLcats: JitrLcats[];
-
-  jitrLcatLevels: JitrLcatLevels[];
   
   constructor(private route: ActivatedRoute,
     private router: Router,

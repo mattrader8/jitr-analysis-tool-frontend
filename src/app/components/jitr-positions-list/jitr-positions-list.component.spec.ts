@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminLcatListComponent } from './admin-lcat-list.component';
+import { JitrPositionsListComponent } from './jitr-positions-list.component';
 
-describe('AdminLcatListComponent', () => {
-  let component: AdminLcatListComponent;
-  let fixture: ComponentFixture<AdminLcatListComponent>;
+describe('JitrPositionsListComponent', () => {
+  let component: JitrPositionsListComponent;
+  let fixture: ComponentFixture<JitrPositionsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminLcatListComponent ]
+      declarations: [ JitrPositionsListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminLcatListComponent);
+    fixture = TestBed.createComponent(JitrPositionsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

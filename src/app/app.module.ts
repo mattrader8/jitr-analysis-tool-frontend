@@ -33,14 +33,10 @@ import { JitrDetailsComponent } from './components/jitr-details/jitr-details.com
 import { AdminComponent } from './components/admin/admin.component';
 import { DeclinedJitrListComponent } from './components/declined-jitr-list/declined-jitr-list.component';
 import { RouterLinkRendererComponent } from './components/router-link-renderer/router-link-renderer.component';
-import { JitrLcatsListComponent } from './components/jitr-lcats-list/jitr-lcats-list.component';
-import { JitrLcatLevelsListComponent } from './components/jitr-lcat-levels-list/jitr-lcat-levels-list.component';
 import { AdminStatusListComponent } from './components/admin-status-list/admin-status-list.component';
-import { AdminLcatListComponent } from './components/admin-lcat-list/admin-lcat-list.component';
-import { JitrDetailsLcatsListComponent } from './components/jitr-details-lcats-list/jitr-details-lcats-list.component';
-import { JitrDetailsLcatLevelListComponent } from './components/jitr-details-lcat-levels-list/jitr-details-lcat-level-list.component';
 import { AdminRatingListComponent } from './components/admin-rating-list/admin-rating-list.component';
-import { AdminLcatLevelListComponent } from './components/admin-lcat-level-list/admin-lcat-level-list.component';
+import { JitrPositionsListComponent } from './components/jitr-positions-list/jitr-positions-list.component';
+import { JitrDetailsPositionsListComponent } from './components/jitr-details-positions-list/jitr-details-positions-list.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +48,10 @@ import { AdminLcatLevelListComponent } from './components/admin-lcat-level-list/
     AdminComponent,
     DeclinedJitrListComponent,
     RouterLinkRendererComponent,
-    JitrLcatsListComponent,
-    JitrLcatLevelsListComponent,
     AdminStatusListComponent,
-    AdminLcatListComponent,
-    JitrDetailsLcatsListComponent,
-    JitrDetailsLcatLevelListComponent,
     AdminRatingListComponent,
-    AdminLcatLevelListComponent
+    JitrPositionsListComponent,
+    JitrDetailsPositionsListComponent
   ],
   imports: [
     BrowserModule,
