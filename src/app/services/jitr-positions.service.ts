@@ -6,7 +6,7 @@ import { JitrPositions } from "../models/jitr-positions.model";
 @Injectable({
     providedIn: 'root'
 })
-export class JitrLcatsService {
+export class JitrPositionsService {
     private baseURL = "http://localhost:8080/api/v1/jitr-positions";
 
     constructor(private httpClient: HttpClient) { }
