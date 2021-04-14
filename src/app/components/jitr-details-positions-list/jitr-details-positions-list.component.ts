@@ -30,7 +30,6 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   jitrPosition: JitrPositions = new JitrPositions;
 
-  // the following variables are for adding a new position
   lcat: string;
   lcats: string[];
 
