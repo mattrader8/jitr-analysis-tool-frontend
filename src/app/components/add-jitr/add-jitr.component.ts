@@ -40,6 +40,7 @@ export class AddJitrComponent implements OnInit {
     this.jitrService.addJitr(this.jitr).subscribe(data => {
       console.log(data);
       alert("Successfully added JITR.");
+      location.reload();
     },
     error => alert("Unable to add JITR."));
   }
