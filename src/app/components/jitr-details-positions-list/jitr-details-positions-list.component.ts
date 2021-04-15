@@ -118,28 +118,34 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   }
 
   onSubmitPosition() {
-    this.saveJitrPositions();
+    if (this.positionCount == this.jitr.numberOfFTE) {
+      alert("Unable to add JITR Position. There are only " + this.jitr.numberOfFTE + " positions for this JITR.");
+    } else if (this.lcat == null || this.lcatLevel == null) {
+      alert("Unable to add JITR Position. Please select an LCAT and Level.");
+    }
+    else {
+      this.saveJitrPositions();
+    }
   }
 
   saveJitrPositions() {
-    this.getPositionID();
-    this.position = {"positionID": this.positionID, "lcatDescription": this.lcat, "lcatLevelDescription": this.lcatLevel}
-    console.log(this.position);
-    this.jitrPosition = {"jitrPositionID": this.generateUUID(), "jitr": this.jitr, "position": this.position};
-    console.log(this.jitrPosition);
-    this.jitrPositionsService.addJitrPositions(this.jitrPosition).subscribe(data => {
-      console.log(data);
-      alert("Successfully added JITR Position.");
-      location.reload();
-    },
-    error => alert("Unable to add JITR Position."));
-  }
-
-  getPositionID() { // THIS IS THE PROBLEM
+    // service call to retrieve positionID from Position table
     this.positionService.getPositionIDByLCATAndLCATLevelDescriptions(this.lcat, this.lcatLevel).subscribe(data => {
-      this.positionID = data; // positionID is not updating globally
-      console.log(this.positionID);
-      return this.positionID;
+      this.positionID = data;
+
+      // constructs the Position object
+      this.position = {"positionID": this.positionID, "lcatDescription": this.lcat, "lcatLevelDescription": this.lcatLevel}
+
+      // constructs the JITR Position object
+      this.jitrPosition = {"jitrPositionID": this.generateUUID(), "jitr": this.jitr, "position": this.position};
+
+      // service call to add JITR Position object to JITR Positions table
+      this.jitrPositionsService.addJitrPositions(this.jitrPosition).subscribe(data => {
+        console.log(data);
+        alert("Successfully added JITR Position.");
+        location.reload();
+      },
+      error => alert("Unable to add JITR Position."));
     });
   }
 
