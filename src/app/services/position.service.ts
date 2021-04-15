@@ -23,6 +23,10 @@ export class PositionService {
         return this.httpClient.get<string[]>(`${this.baseURL}/${lcatDescription}`);
     }
 
+    getPositionIDByLCATAndLCATLevelDescriptions(lcatDescription: string, lcatLevelDescription: string): Observable<number> {
+        return this.httpClient.get<number>(`${this.baseURL}/${lcatDescription}/${lcatLevelDescription}`);
+    }
+
     addLcat(position: Position): Observable<Object> {
         return this.httpClient.post(`${this.baseURL}`, position);
     }
