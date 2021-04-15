@@ -1,8 +1,10 @@
-import { Component, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AgGridAngular } from 'ag-grid-angular';
+import { UUID } from 'angular2-uuid';
 import { JitrPositions } from 'src/app/models/jitr-positions.model';
 import { Jitr } from 'src/app/models/jitr.model';
+import { Position } from 'src/app/models/position.model';
 import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { PositionService } from 'src/app/services/position.service';
 
@@ -26,7 +28,10 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   totalPositionCount: number;
   positionPercent: number;
 
-  maxID: number;
+  positionID: number;
+  jitrPositionID: string;
+
+  position: Position = new Position;
 
   jitrPosition: JitrPositions = new JitrPositions;
 
@@ -117,21 +122,29 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   }
 
   saveJitrPositions() {
-    // to do
-    // 1) create UUID
-    // 2) construct object {UUID, lcat, level}
-    /*this.getID();
-    this.jitrLcat = {"jitrLCATID": this.maxID, "jitr": this.jitr, "lcat": this.lcat};
-    this.jitrLcatsService.addJitrLcats(this.jitrLcat).subscribe(data => {
+    this.getPositionID();
+    this.position = {"positionID": this.positionID, "lcatDescription": this.lcat, "lcatLevelDescription": this.lcatLevel}
+    console.log(this.position);
+    this.jitrPosition = {"jitrPositionID": this.generateUUID(), "jitr": this.jitr, "position": this.position};
+    console.log(this.jitrPosition);
+    this.jitrPositionsService.addJitrPositions(this.jitrPosition).subscribe(data => {
       console.log(data);
-      alert("Successfully added LCAT.");
+      alert("Successfully added JITR Position.");
       location.reload();
     },
-    error => alert("Unable to add LCAT."));*/
+    error => alert("Unable to add JITR Position."));
   }
 
-  getUUID() { // work around - need to eventually bind JitrLcat data and send to back-end like "add-jitr" component
-    // to do
-    // generate new uuid
+  getPositionID() { // THIS IS THE PROBLEM
+    this.positionService.getPositionIDByLCATAndLCATLevelDescriptions(this.lcat, this.lcatLevel).subscribe(data => {
+      this.positionID = data; // positionID is not updating globally
+      console.log(this.positionID);
+      return this.positionID;
+    });
+  }
+
+  generateUUID() {
+    this.jitrPositionID = UUID.UUID();
+    return this.jitrPositionID;
   }
 }

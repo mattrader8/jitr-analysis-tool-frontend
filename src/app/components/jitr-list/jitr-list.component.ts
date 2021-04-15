@@ -56,7 +56,7 @@ export class JitrListComponent implements OnInit {
       params.api.setRowData(data);
       this.totalJitrCount = this.getRowCount();
       this.jitrPercent = this.getPercent();
-    })
+    });
     params.api.sizeColumnsToFit();
   }
 
