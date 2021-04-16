@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JitrLcatsListComponent } from './jitr-lcats-list.component';
+import { JitrPositionsListComponent } from './jitr-positions-list.component';
 
-describe('JitrLcatsListComponent', () => {
-  let component: JitrLcatsListComponent;
-  let fixture: ComponentFixture<JitrLcatsListComponent>;
+describe('JitrPositionsListComponent', () => {
+  let component: JitrPositionsListComponent;
+  let fixture: ComponentFixture<JitrPositionsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JitrLcatsListComponent ]
+      declarations: [ JitrPositionsListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JitrLcatsListComponent);
+    fixture = TestBed.createComponent(JitrPositionsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
