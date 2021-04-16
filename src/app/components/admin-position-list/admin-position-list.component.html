@@ -1,0 +1,30 @@
+<h3> JITR Positions </h3>
+<br>
+<div>
+    <ag-grid-angular
+    #agGrid
+    style="width: 500px; height: 275px"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+</div>
+<br>
+<div class="form">
+    <form class="add-jitr-status-form" (ngSubmit)="onSubmitPosition()">
+        <mat-form-field class="mat-form">
+            <mat-label>Enter New LCAT</mat-label>
+            <input matInput type="text" id="lcatDescription"
+            [(ngModel)]="position.lcatDescription" name="lcatDescription">
+        </mat-form-field> &nbsp; &nbsp;
+        <mat-form-field class="mat-form">
+            <mat-label>Enter New LCAT Level</mat-label>
+            <input matInput type="text" id="lcatLevelDescription"
+            [(ngModel)]="position.lcatLevelDescription" name="lcatLevelDescription">
+        </mat-form-field>
+        <button class="btn">Add</button>
+    </form>
+</div>

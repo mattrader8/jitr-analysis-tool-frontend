@@ -37,6 +37,7 @@ import { AdminStatusListComponent } from './components/admin-status-list/admin-s
 import { AdminRatingListComponent } from './components/admin-rating-list/admin-rating-list.component';
 import { JitrPositionsListComponent } from './components/jitr-positions-list/jitr-positions-list.component';
 import { JitrDetailsPositionsListComponent } from './components/jitr-details-positions-list/jitr-details-positions-list.component';
+import { AdminPositionListComponent } from './components/admin-position-list/admin-position-list.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { JitrDetailsPositionsListComponent } from './components/jitr-details-pos
     AdminStatusListComponent,
     AdminRatingListComponent,
     JitrPositionsListComponent,
-    JitrDetailsPositionsListComponent
+    JitrDetailsPositionsListComponent,
+    AdminPositionListComponent,
   ],
   imports: [
     BrowserModule,

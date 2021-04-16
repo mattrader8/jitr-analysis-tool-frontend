@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Position } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Position } from "../models/position.model";
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +27,7 @@ export class PositionService {
         return this.httpClient.get<number>(`${this.baseURL}/${lcatDescription}/${lcatLevelDescription}`);
     }
 
-    addLcat(position: Position): Observable<Object> {
+    addPosition(position: Position): Observable<Object> {
         return this.httpClient.post(`${this.baseURL}`, position);
     }
 }
