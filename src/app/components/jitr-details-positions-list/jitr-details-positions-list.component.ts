@@ -111,10 +111,19 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   }
 
   getLcatLevels() {
-    this.positionService.getLCATLevelListByLCATDescription(this.lcat).subscribe(data => {
-      this.lcatLevels = data;
-      console.log(this.lcatLevels);
-    })
+    if (this.jitr.jitrStatus.statusDescription == 'No-Bid') {
+      this.lcatLevels = ['Not Applicable'];
+    } else if (this.jitr.jitrStatus.statusDescription == 'Cancelled') {
+      this.positionService.getLCATLevelListByLCATDescriptionForCancelledJITRs(this.lcat).subscribe(data => {
+        this.lcatLevels = data;
+        console.log(this.lcatLevels);
+      })
+    } else {
+      this.positionService.getLCATLevelListByLCATDescriptionForActiveJITRs(this.lcat).subscribe(data => {
+        this.lcatLevels = data;
+        console.log(this.lcatLevels);
+      })
+    }
   }
 
   onSubmitPosition() {

@@ -19,7 +19,11 @@ export class PositionService {
         return this.httpClient.get<string[]>(`${this.baseURL}` + '/lcats');
     }
 
-    getLCATLevelListByLCATDescription(lcatDescription: string): Observable<string[]> {
+    getLCATLevelListByLCATDescriptionForCancelledJITRs(lcatDescription: string): Observable<string[]> {
+        return this.httpClient.get<string[]>(`${this.baseURL}` + '/cancelled/' + `${lcatDescription}`);
+    }
+
+    getLCATLevelListByLCATDescriptionForActiveJITRs(lcatDescription: string): Observable<string[]> {
         return this.httpClient.get<string[]>(`${this.baseURL}/${lcatDescription}`);
     }
 
