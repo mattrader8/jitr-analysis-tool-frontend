@@ -17,6 +17,7 @@
                 <th>JITR Status</th>
                 <th>JITR Rating</th>
                 <th>JITR Organization</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,10 @@
                 <td> {{jitr.jitrStatus?.statusDescription}} </td>
                 <td> {{jitr.jitrRating?.ratingDescription}} </td>
                 <td> {{jitr.jitrOrganization?.jitrOrganizationName}} </td>
+                <td>
+                    <mat-icon class="mat-icon" matTooltip="Edit JITR">edit</mat-icon> &nbsp;
+                    <mat-icon class="mat-icon" matTooltip="Delete JITR">delete</mat-icon>
+                </td>
             </tr>
         </tbody>
     </table>
