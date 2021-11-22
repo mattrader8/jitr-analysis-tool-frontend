@@ -1,7 +1,7 @@
 <h3 class="jitr-details-title"> JITR Details </h3>
 <br>
 <button mat-icon-button (click)="returnToJITRList()" type="button">
-    <mat-icon class="mat-icon" matTooltip="Return to JITR Home">arrow_back</mat-icon> &nbsp;&nbsp;
+    <mat-icon class="return-icon" matTooltip="Return to JITR Home">arrow_back</mat-icon> &nbsp;&nbsp;
     <mat-label class>Return</mat-label>
 </button>
 <br>
@@ -29,8 +29,8 @@
                 <td> {{jitr.jitrRating?.ratingDescription}} </td>
                 <td> {{jitr.jitrOrganization?.jitrOrganizationName}} </td>
                 <td>
-                    <mat-icon class="mat-icon" matTooltip="Edit JITR">edit</mat-icon> &nbsp;
-                    <mat-icon class="mat-icon" matTooltip="Delete JITR">delete</mat-icon>
+                    <mat-icon (click)="openUpdateDialog()" class="edit-icon" matTooltip="Edit JITR">edit</mat-icon>
+                    <mat-icon class="delete-icon" matTooltip="Delete JITR">delete</mat-icon>
                 </td>
             </tr>
         </tbody>

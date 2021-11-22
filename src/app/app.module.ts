@@ -20,8 +20,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Component imports
 
@@ -38,6 +39,7 @@ import { AdminRatingListComponent } from './components/admin-rating-list/admin-r
 import { JitrPositionsListComponent } from './components/jitr-positions-list/jitr-positions-list.component';
 import { JitrDetailsPositionsListComponent } from './components/jitr-details-positions-list/jitr-details-positions-list.component';
 import { AdminPositionListComponent } from './components/admin-position-list/admin-position-list.component';
+import { UpdateJitrDialogComponent } from './components/update-jitr-dialog/update-jitr-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { AdminPositionListComponent } from './components/admin-position-list/adm
     JitrPositionsListComponent,
     JitrDetailsPositionsListComponent,
     AdminPositionListComponent,
+    UpdateJitrDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { AdminPositionListComponent } from './components/admin-position-list/adm
     MatTooltipModule,
     MatIconModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
