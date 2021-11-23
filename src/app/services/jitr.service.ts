@@ -30,4 +30,8 @@ export class JitrService {
     getAverageCostDifference(): Observable<number> {
         return this.httpClient.get<number>(`${this.baseURL}` + '/average-cost-difference');
     }
+
+    updateJitr(jitrNumber: number, jitr: Jitr): Observable<Object> {
+        return this.httpClient.put(`${this.baseURL}/${jitrNumber}`, jitr);
+      }
 }

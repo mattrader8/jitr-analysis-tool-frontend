@@ -1,0 +1,17 @@
+.submit-button {
+    color: white;
+    background-color: darkgrey;
+}
+
+.cancel-button {
+    color: white;
+    background-color: rgb(206, 33, 43);
+}
+
+.submit-button:hover {
+    background: gray;
+}
+
+.cancel-button:hover {
+    background: rgb(170, 0, 0);
+}
