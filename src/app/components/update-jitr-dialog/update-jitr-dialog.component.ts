@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { JitrOrganization } from 'src/app/models/jitr-organization.model';
 import { JitrRating } from 'src/app/models/jitr-rating.model';
 import { JitrStatus } from 'src/app/models/jitr-status.model';
@@ -8,7 +8,6 @@ import { JitrOrganizationService } from 'src/app/services/jitr-organization.serv
 import { JitrRatingService } from 'src/app/services/jitr-rating.service';
 import { JitrStatusService } from 'src/app/services/jitr-status.service';
 import { JitrService } from 'src/app/services/jitr.service';
-import { JitrDetailsComponent } from '../jitr-details/jitr-details.component';
 
 @Component({
   selector: 'app-update-jitr-dialog',
@@ -68,6 +67,8 @@ export class UpdateJitrDialogComponent implements OnInit {
   }
 
   cancelUpdate() {
-    location.reload();
+    if(confirm("Are you sure you want to cancel? Changes to JITR Details will not be saved.")) {
+      location.reload();
+    }
   }
 }

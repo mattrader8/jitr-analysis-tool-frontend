@@ -13,51 +13,51 @@
     </mat-form-field>
     <br>
     <mat-form-field>
-      <mat-label>Number of FTE</mat-label>
-      <input matNativeControl placeholder="{{ data.jitr.numberOfFTE }}" required matInput type="text" id="numberOfFTE"
-      [(ngModel)]="data.jitr.numberOfFTE" name="numberOfFTE">
+        <mat-label>Number of FTE</mat-label>
+        <input matNativeControl placeholder="{{ data.jitr.numberOfFTE }}" required matInput type="text" id="numberOfFTE"
+        [(ngModel)]="data.jitr.numberOfFTE" name="numberOfFTE">
     </mat-form-field>
     <br>
     <mat-form-field>
         <mat-label>JITR Status</mat-label>
         <select matNativeControl required [(ngModel)]="data.jitr.jitrStatus" name="jitrStatus">
-          <option *ngFor="let jitrStatus of jitrStatuses"
-              [ngValue]="jitrStatus"
-              [disabled]="jitrStatus.disabled"> {{ jitrStatus.statusDescription }}
-          </option>
+            <option *ngFor="let jitrStatus of jitrStatuses"
+                [ngValue]="jitrStatus"
+                [disabled]="jitrStatus.disabled"> {{ jitrStatus.statusDescription }}
+            </option>
         </select>
     </mat-form-field>
     <br>
     <mat-form-field>
         <mat-label>JITR Rating</mat-label>
         <select matNativeControl required [(ngModel)]="data.jitr.jitrRating" name="jitrRating">
-          <option *ngFor="let jitrRating of jitrRatings" 
-              [ngValue]="jitrRating"
-              [disabled]="jitrRating.disabled"> {{ jitrRating.ratingDescription }}
-          </option>
+            <option *ngFor="let jitrRating of jitrRatings" 
+                [ngValue]="jitrRating"
+                [disabled]="jitrRating.disabled"> {{ jitrRating.ratingDescription }}
+            </option>
         </select>
     </mat-form-field>
     <br>
     <mat-form-field>
-      <mat-label>Praxis Estimated Cost</mat-label>
-      <input placeholder="{{ data.jitr.praxisEstimatedCost }}" matInput type="text" id="praxisEstimatedCost"
-      [(ngModel)]="data.jitr.praxisEstimatedCost" name="praxisEstimatedCost">
+        <mat-label>Praxis Estimated Cost</mat-label>
+        <input placeholder="{{ data.jitr.praxisEstimatedCost }}" matInput type="text" id="praxisEstimatedCost"
+        [(ngModel)]="data.jitr.praxisEstimatedCost" name="praxisEstimatedCost">
     </mat-form-field>
     <br>
     <mat-form-field>
-      <mat-label>Winning Prime Estimated Cost</mat-label>
-      <input placeholder="{{ data.jitr.winningPrimeEstimatedCost }}" matInput type="text" id="winningPrimeEstimatedCost"
-      [(ngModel)]="data.jitr.winningPrimeEstimatedCost" name="winningPrimeEstimatedCost">
+        <mat-label>Winning Prime Estimated Cost</mat-label>
+        <input placeholder="{{ data.jitr.winningPrimeEstimatedCost }}" matInput type="text" id="winningPrimeEstimatedCost"
+        [(ngModel)]="data.jitr.winningPrimeEstimatedCost" name="winningPrimeEstimatedCost">
     </mat-form-field>
     <br>
     <mat-form-field>
-      <mat-label>JITR Organization</mat-label>
-      <select matNativeControl required [(ngModel)]="data.jitr.jitrOrganization" name="jitrOrganization">
+        <mat-label>JITR Organization</mat-label>
+        <select matNativeControl required [(ngModel)]="data.jitr.jitrOrganization" name="jitrOrganization">
         <option *ngFor="let jitrOrganization of jitrOrganizations" 
             [ngValue]="jitrOrganization"
             [disabled]="jitrOrganization.disabled"> {{ jitrOrganization.jitrOrganizationName }}
         </option>
-      </select>
+        </select>
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
