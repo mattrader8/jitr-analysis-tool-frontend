@@ -42,7 +42,12 @@ export class JitrDetailsComponent implements OnInit {
 
   openUpdateDialog() {
     let updateJitrDialog = this.dialog.open(UpdateJitrDialogComponent, {
-      data: {jitr: this.jitr},
+      data: {
+        jitr: this.jitr,
+      },
     });
+    updateJitrDialog.afterClosed().subscribe(result => {
+      location.reload();
+    })
   }
 }

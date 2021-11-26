@@ -61,6 +61,6 @@
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button type="button" class="cancel-button" mat-dialog-close>Cancel</button>
+    <button mat-button type="button" class="cancel-button" (click)="cancelUpdate()">Cancel</button>
     <button mat-button class="submit-button" (click)="updateJitr()">Save</button>
 </mat-dialog-actions>
