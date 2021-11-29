@@ -20,10 +20,10 @@
     <br>
     <mat-form-field>
         <mat-label>JITR Status</mat-label>
+        <!-- StackOverflow for dynamic select issue: https://stackoverflow.com/questions/41299247/use-ngvalue-and-selected-in-select-tag-->
         <select matNativeControl required [(ngModel)]="data.jitr.jitrStatus" name="jitrStatus">
             <option *ngFor="let jitrStatus of jitrStatuses"
-                [ngValue]="jitrStatus"
-                [disabled]="jitrStatus.disabled"> {{ jitrStatus.statusDescription }}
+                [ngValue]="jitrStatus"> {{ jitrStatus.statusDescription }}
             </option>
         </select>
     </mat-form-field>
@@ -32,8 +32,7 @@
         <mat-label>JITR Rating</mat-label>
         <select matNativeControl required [(ngModel)]="data.jitr.jitrRating" name="jitrRating">
             <option *ngFor="let jitrRating of jitrRatings" 
-                [ngValue]="jitrRating"
-                [disabled]="jitrRating.disabled"> {{ jitrRating.ratingDescription }}
+                [ngValue]="jitrRating"> {{ jitrRating.ratingDescription }}
             </option>
         </select>
     </mat-form-field>
@@ -54,8 +53,7 @@
         <mat-label>JITR Organization</mat-label>
         <select matNativeControl required [(ngModel)]="data.jitr.jitrOrganization" name="jitrOrganization">
         <option *ngFor="let jitrOrganization of jitrOrganizations" 
-            [ngValue]="jitrOrganization"
-            [disabled]="jitrOrganization.disabled"> {{ jitrOrganization.jitrOrganizationName }}
+            [ngValue]="jitrOrganization"> {{ jitrOrganization.jitrOrganizationName }}
         </option>
         </select>
     </mat-form-field>
