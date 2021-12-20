@@ -20,6 +20,10 @@ export class UpdateJitrDialogComponent implements OnInit {
   jitrStatuses: JitrStatus[];
   jitrRatings: JitrRating[];
   jitrOrganizations: JitrOrganization[];
+
+  selectedJitrStatus: JitrStatus;
+  selectedJitrRating: JitrRating;
+  selectedJitrOrganization: JitrOrganization;
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: {jitr: Jitr, },
     private jitrStatusService: JitrStatusService,
@@ -31,6 +35,10 @@ export class UpdateJitrDialogComponent implements OnInit {
     this.getJitrStatuses();
     this.getJitrRatings();
     this.getJitrOrganizations();
+
+    this.selectedJitrStatus = this.data.jitr.jitrStatus;
+    this.selectedJitrRating = this.data.jitr.jitrRating;
+    this.selectedJitrOrganization = this.data.jitr.jitrOrganization;
   }
 
   updateJitr() {
@@ -48,7 +56,6 @@ export class UpdateJitrDialogComponent implements OnInit {
     this.jitrStatusService.getJitrStatusesList().subscribe(data => {
       this.jitrStatuses = data;
       console.log(this.jitrStatuses);
-      console.log(this.data.jitr.jitrStatus);
     })
   }
 

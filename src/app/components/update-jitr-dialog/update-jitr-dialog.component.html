@@ -20,19 +20,18 @@
     <br>
     <mat-form-field>
         <mat-label>JITR Status</mat-label>
-        <!-- StackOverflow for dynamic select issue: https://stackoverflow.com/questions/41299247/use-ngvalue-and-selected-in-select-tag-->
-        <select matNativeControl required [(ngModel)]="data.jitr.jitrStatus" name="jitrStatus">
+        <select matNativeControl required [(ngModel)]="selectedJitrStatus.jitrStatusID" name="jitrStatus">
             <option *ngFor="let jitrStatus of jitrStatuses"
-                [ngValue]="jitrStatus"> {{ jitrStatus.statusDescription }}
+                [ngValue]="jitrStatus.jitrStatusID"> {{ jitrStatus.statusDescription }}
             </option>
         </select>
     </mat-form-field>
     <br>
     <mat-form-field>
         <mat-label>JITR Rating</mat-label>
-        <select matNativeControl required [(ngModel)]="data.jitr.jitrRating" name="jitrRating">
+        <select matNativeControl required [(ngModel)]="selectedJitrRating.jitrRatingID" name="jitrRating">
             <option *ngFor="let jitrRating of jitrRatings" 
-                [ngValue]="jitrRating"> {{ jitrRating.ratingDescription }}
+                [ngValue]="jitrRating.jitrRatingID"> {{ jitrRating.ratingDescription }}
             </option>
         </select>
     </mat-form-field>
@@ -51,10 +50,10 @@
     <br>
     <mat-form-field>
         <mat-label>JITR Organization</mat-label>
-        <select matNativeControl required [(ngModel)]="data.jitr.jitrOrganization" name="jitrOrganization">
-        <option *ngFor="let jitrOrganization of jitrOrganizations" 
-            [ngValue]="jitrOrganization"> {{ jitrOrganization.jitrOrganizationName }}
-        </option>
+        <select matNativeControl required [(ngModel)]="selectedJitrOrganization.jitrOrganizationID" name="jitrOrganization">
+            <option *ngFor="let jitrOrganization of jitrOrganizations" 
+                [ngValue]="jitrOrganization.jitrOrganizationID"> {{ jitrOrganization.jitrOrganizationName }}
+            </option>
         </select>
     </mat-form-field>
 </mat-dialog-content>
