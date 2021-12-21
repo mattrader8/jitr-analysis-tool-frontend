@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Jitr } from 'src/app/models/jitr.model';
 import { JitrService } from 'src/app/services/jitr.service';
+import { UpdateJitrDialogComponent } from '../update-jitr-dialog/update-jitr-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-jitr-details',
@@ -16,6 +18,7 @@ export class JitrDetailsComponent implements OnInit {
   
   constructor(private route: ActivatedRoute,
     private router: Router,
+    private dialog: MatDialog,
     private jitrService: JitrService,
     private titleService: Title) {
       this.titleService.setTitle("JITR Details");
@@ -35,5 +38,16 @@ export class JitrDetailsComponent implements OnInit {
 
   returnToJITRList() {
     this.router.navigate(['jitrs']);
+  }
+
+  openUpdateDialog() {
+    let updateJitrDialog = this.dialog.open(UpdateJitrDialogComponent, {
+      data: {
+        jitr: this.jitr,
+      },
+    });
+    updateJitrDialog.afterClosed().subscribe(result => {
+      location.reload();
+    })
   }
 }

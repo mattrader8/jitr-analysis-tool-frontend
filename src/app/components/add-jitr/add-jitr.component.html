@@ -24,8 +24,7 @@
       <mat-label>JITR Status</mat-label>
       <select matNativeControl required [(ngModel)]="jitr.jitrStatus" name="jitrStatus">
         <option *ngFor="let jitrStatus of jitrStatuses" 
-            [ngValue]="jitrStatus"
-            [disabled]="jitrStatus.disabled"> {{ jitrStatus.statusDescription }}
+            [ngValue]="jitrStatus"> {{ jitrStatus.statusDescription }}
         </option>
       </select>
     </mat-form-field>
@@ -34,8 +33,7 @@
       <mat-label>JITR Rating</mat-label>
       <select matNativeControl required [(ngModel)]="jitr.jitrRating" name="jitrRating">
         <option *ngFor="let jitrRating of jitrRatings" 
-            [ngValue]="jitrRating"
-            [disabled]="jitrRating.disabled"> {{ jitrRating.ratingDescription }}
+            [ngValue]="jitrRating"> {{ jitrRating.ratingDescription }}
         </option>
       </select>
     </mat-form-field>
@@ -56,8 +54,7 @@
       <mat-label>JITR Organization</mat-label>
       <select matNativeControl required [(ngModel)]="jitr.jitrOrganization" name="jitrOrganization">
         <option *ngFor="let jitrOrganization of jitrOrganizations" 
-            [ngValue]="jitrOrganization"
-            [disabled]="jitrOrganization.disabled"> {{ jitrOrganization.jitrOrganizationName }}
+            [ngValue]="jitrOrganization"> {{ jitrOrganization.jitrOrganizationName }}
         </option>
       </select>
     </mat-form-field>
