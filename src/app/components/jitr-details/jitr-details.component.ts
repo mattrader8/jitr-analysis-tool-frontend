@@ -50,4 +50,15 @@ export class JitrDetailsComponent implements OnInit {
       location.reload();
     })
   }
+
+  deleteJitr() {
+    if(confirm("Are you sure you want to delete this JITR?")) {
+      this.jitrService.deleteJitr(this.jitrNumber).subscribe(data => {
+        console.log(data);
+        alert("Successfully deleted JITR.");
+        this.router.navigate(['jitrs']);
+      },
+      error => alert("Unable to delete JITR."));
+    }
+  }
 }

@@ -33,5 +33,9 @@ export class JitrService {
 
     updateJitr(jitrNumber: number, jitr: Jitr): Observable<Object> {
         return this.httpClient.put(`${this.baseURL}/${jitrNumber}`, jitr);
-      }
+    }
+
+    deleteJitr(jitrNumber: number): Observable<Object> {
+        return this.httpClient.delete(`${this.baseURL}/${jitrNumber}`);
+    }
 }

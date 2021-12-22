@@ -30,7 +30,7 @@
                 <td> {{jitr.jitrOrganization?.jitrOrganizationName}} </td>
                 <td>
                     <mat-icon (click)="openUpdateDialog()" class="edit-icon" matTooltip="Edit JITR">edit</mat-icon>
-                    <mat-icon class="delete-icon" matTooltip="Delete JITR">delete</mat-icon>
+                    <mat-icon (click)="deleteJitr()" class="delete-icon" matTooltip="Delete JITR">delete</mat-icon>
                 </td>
             </tr>
         </tbody>
