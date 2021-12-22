@@ -7,6 +7,7 @@ import { Jitr } from 'src/app/models/jitr.model';
 import { Position } from 'src/app/models/position.model';
 import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { PositionService } from 'src/app/services/position.service';
+import { IconRendererComponent } from '../icon-renderer/icon-renderer.component';
 
 @Component({
   selector: 'app-jitr-details-positions-list',
@@ -51,8 +52,11 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Actions', 
+        cellRendererFramework:  IconRendererComponent,
+      }
     ];
     this.getLcats();
   }
