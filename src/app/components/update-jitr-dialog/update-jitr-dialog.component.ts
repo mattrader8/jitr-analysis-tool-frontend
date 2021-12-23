@@ -24,6 +24,8 @@ export class UpdateJitrDialogComponent implements OnInit {
   selectedJitrStatus: JitrStatus;
   selectedJitrRating: JitrRating;
   selectedJitrOrganization: JitrOrganization;
+
+  jitr = this.data.jitr;
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: {jitr: Jitr, },
     private jitrStatusService: JitrStatusService,
@@ -36,14 +38,14 @@ export class UpdateJitrDialogComponent implements OnInit {
     this.getJitrRatings();
     this.getJitrOrganizations();
 
-    this.selectedJitrStatus = this.data.jitr.jitrStatus;
-    this.selectedJitrRating = this.data.jitr.jitrRating;
-    this.selectedJitrOrganization = this.data.jitr.jitrOrganization;
+    this.selectedJitrStatus = this.jitr.jitrStatus;
+    this.selectedJitrRating = this.jitr.jitrRating;
+    this.selectedJitrOrganization = this.jitr.jitrOrganization;
   }
 
   updateJitr() {
     if(confirm("Are you sure you want to update this JITR?")) {
-      this.jitrService.updateJitr(this.data.jitr.jitrNumber, this.data.jitr).subscribe(data => {
+      this.jitrService.updateJitr(this.jitr.jitrNumber, this.jitr).subscribe(data => {
         console.log(data);
         alert("Successfully updated JITR.");
         location.reload();
