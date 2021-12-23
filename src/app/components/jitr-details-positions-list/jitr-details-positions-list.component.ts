@@ -1,12 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AgGridAngular } from 'ag-grid-angular';
+import { CellClickedEvent } from 'ag-grid-community';
 import { UUID } from 'angular2-uuid';
 import { JitrPositions } from 'src/app/models/jitr-positions.model';
 import { Jitr } from 'src/app/models/jitr.model';
 import { Position } from 'src/app/models/position.model';
 import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { PositionService } from 'src/app/services/position.service';
+import { IconRendererComponent } from '../icon-renderer/icon-renderer.component';
 
 @Component({
   selector: 'app-jitr-details-positions-list',
@@ -51,8 +53,16 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Actions', 
+        cellRendererFramework:  IconRendererComponent,
+        cellRendererParams: {
+          positionToUpdate: {
+            onCellClicked: (event: CellClickedEvent) => event.data,
+          }
+        }
+      }
     ];
     this.getLcats();
   }
