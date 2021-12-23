@@ -22,4 +22,8 @@ export class JitrPositionsService {
     addJitrPositions(jitrPositions: JitrPositions): Observable<Object> {
         return this.httpClient.post(`${this.baseURL}`, jitrPositions);
     }
+
+    updateJitrPositions(jitrPositionsID: string, jitrPositions: JitrPositions): Observable<Object> {
+        return this.httpClient.put(`${this.baseURL}/${jitrPositionsID}`, jitrPositions);
+    }
 }
