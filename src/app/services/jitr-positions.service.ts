@@ -26,4 +26,8 @@ export class JitrPositionsService {
     updateJitrPositions(jitrPositionsID: string, jitrPositions: JitrPositions): Observable<Object> {
         return this.httpClient.put(`${this.baseURL}/${jitrPositionsID}`, jitrPositions);
     }
+
+    deleteJitrPositions(jitrPositionsID: string): Observable<Object> {
+        return this.httpClient.delete(`${this.baseURL}/${jitrPositionsID}`);
+    }
 }
