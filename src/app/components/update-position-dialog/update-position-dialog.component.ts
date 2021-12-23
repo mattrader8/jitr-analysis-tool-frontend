@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { JitrPositions } from 'src/app/models/jitr-positions.model';
 import { PositionService } from 'src/app/services/position.service';
 
 @Component({
   selector: 'app-update-position-dialog',
+  template: 'passed in {{ data.jitrPosition }}',
   templateUrl: './update-position-dialog.component.html',
   styleUrls: ['./update-position-dialog.component.scss']
 })
@@ -14,10 +17,15 @@ export class UpdatePositionDialogComponent implements OnInit {
   lcatLevel: string;
   lcatLevels: string[];
 
-  constructor(private positionService: PositionService,) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {jitrPosition: JitrPositions, },
+    private positionService: PositionService,) { }
 
   ngOnInit(): void {
     this.getLcats();
+
+    // tests to make sure data was passed correctly
+    console.log(this.data.jitrPosition.jitr.jitrStatus.statusDescription);
+    console.log(this.data.jitrPosition.position.lcatDescription);
   }
 
   getLcats() {

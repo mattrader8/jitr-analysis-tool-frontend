@@ -23,10 +23,15 @@ export class IconRendererComponent implements AgRendererComponent {
   }
 
   openUpdatePositionDialog() {
-    let updatePositionDialog = this.dialog.open(UpdatePositionDialogComponent);
+    let updatePositionDialog = this.dialog.open(UpdatePositionDialogComponent, {
+      data: {
+        jitrPosition: this.params.data,
+      },
+    });
     updatePositionDialog.afterClosed().subscribe(result => {
       location.reload();
     })
+    console.log(this.params.data);
   }
 
 }
