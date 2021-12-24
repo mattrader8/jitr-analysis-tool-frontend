@@ -53,7 +53,7 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'LCAT Description', field: 'position.lcatDescription', sort: 'asc', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Actions', 
         cellRendererFramework:  IconRendererComponent,
@@ -137,8 +137,12 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   }
 
   onSubmitPosition() {
-    if (this.positionCount == this.jitr.numberOfFTE) {
-      alert("Unable to add JITR Position. There are only " + this.jitr.numberOfFTE + " positions for this JITR.");
+    if (this.positionCount >= this.jitr.numberOfFTE) {
+        if(this.jitr.numberOfFTE == 1) {
+          alert("Unable to add JITR Position. There is only " + this.jitr.numberOfFTE + " position for this JITR.");
+        } else {
+          alert("Unable to add JITR Position. There are only " + this.jitr.numberOfFTE + " positions for this JITR.");
+        }
     } else if (this.lcat == null || this.lcatLevel == null) {
       alert("Unable to add JITR Position. Please select an LCAT and Level.");
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AgRendererComponent } from 'ag-grid-angular';
+import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { UpdatePositionDialogComponent } from '../update-position-dialog/update-position-dialog.component';
 
 @Component({
@@ -12,7 +13,8 @@ export class IconRendererComponent implements AgRendererComponent {
 
   params: any;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+    private jitrPositionsService: JitrPositionsService) {}
 
   agInit(params: any): void {
       this.params = params;
@@ -34,4 +36,14 @@ export class IconRendererComponent implements AgRendererComponent {
     console.log(this.params.data);
   }
 
+  deletePosition() {
+    if(confirm("Are you sure you want to delete this JITR Position?")) {
+      this.jitrPositionsService.deleteJitrPositions(this.params.data.jitrPositionID).subscribe(data => {
+        console.log(data);
+        alert("Successfully deleted JITR Position.");
+        location.reload();
+      },
+      error => alert("Unable to delete JITR Position."));
+    }
+  }
 }
