@@ -37,7 +37,7 @@ export class DeclinedJitrListComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'JITR Number', field: 'jitrNumber', sortable: true, filter: 'agNumberColumnFilter',
+      { headerName: 'JITR Number', field: 'jitrNumber', sort: 'asc', sortable: true, filter: 'agNumberColumnFilter',
         cellRendererFramework: RouterLinkRendererComponent,
           cellRendererParams: {
             inRouterLink: '/jitr-details'

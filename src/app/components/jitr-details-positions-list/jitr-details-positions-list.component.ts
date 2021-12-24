@@ -53,7 +53,7 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'LCAT Description', field: 'position.lcatDescription', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'LCAT Description', field: 'position.lcatDescription', sort: 'asc', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Actions', 
         cellRendererFramework:  IconRendererComponent,
