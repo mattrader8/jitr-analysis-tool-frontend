@@ -6,6 +6,8 @@ import { Jitr } from 'src/app/models/jitr.model';
 import { JitrService } from 'src/app/services/jitr.service';
 import { RouterLinkRendererComponent } from '../router-link-renderer/router-link-renderer.component';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-jitr-list',
   templateUrl: './jitr-list.component.html',
@@ -94,6 +96,8 @@ export class JitrListComponent implements OnInit {
   }
 
   dateFormatter(params: any) {
-    return params.value ? (new Date(params.value)).toLocaleDateString() : ''; 
+    let dateFormat = 'MM/DD/YYYY';
+    let formattedDate = moment(params.value).format(dateFormat);
+    return formattedDate;
   }
 }
