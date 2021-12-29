@@ -42,7 +42,27 @@ export class JitrListComponent implements OnInit {
         }
       },
       { headerName: 'JITR Date', field: 'jitrDate', sortable: true, filter: 'agDateColumnFilter',
-        cellRenderer: this.dateFormatter
+        cellRenderer: this.dateFormatter,
+        filterParams: {
+          comparator: function(filterLocalDateAtMidnight, cellValue) {
+          
+            let dateAsString = moment(cellValue).format('DD/MM/YYYY');
+            let dateParts = dateAsString.split("/");
+            let cellDate = new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
+      
+            if (filterLocalDateAtMidnight.getTime() == cellDate.getTime()) {
+              return 0
+            }
+      
+            if (cellDate < filterLocalDateAtMidnight) {
+              return -1;
+            }
+      
+            if (cellDate > filterLocalDateAtMidnight) {
+              return 1;
+            }
+          }
+        }
       },
       { headerName: 'Number Of FTE', field: 'numberOfFTE', sortable: true, filter: 'agNumberColumnFilter' },
       { headerName: 'JITR Status', field: 'jitrStatus.statusDescription', sortable: true, filter: 'agTextColumnFilter' },
