@@ -69,7 +69,7 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.gridColumnApi;
+    this.gridColumnApi = params.columnApi;
     this.jitrPositionsService.getJitrPositionsByJitrNumber(this.jitrNumber).subscribe(data => {
       params.api.setRowData(data);
       this.totalPositionCount = this.getRowCount();
@@ -91,7 +91,11 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridApi.setSortModel(null);
+    this.gridColumnApi.applyColumnState({
+      defaultState: {
+        sort: null
+      },
+    });
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }

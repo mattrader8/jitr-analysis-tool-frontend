@@ -68,7 +68,7 @@ export class DeclinedJitrListComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.gridColumnApi;
+    this.gridColumnApi = params.columnApi;
     this.jitrService.getDeclinedJitrs().subscribe(data => {
       params.api.setRowData(data);
       this.totalJitrCount = this.getRowCount();
@@ -91,7 +91,11 @@ export class DeclinedJitrListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridApi.setSortModel(null);
+    this.gridColumnApi.applyColumnState({
+      defaultState: {
+        sort: null
+      },
+    });
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }

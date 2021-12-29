@@ -41,7 +41,7 @@ export class JitrListComponent implements OnInit {
           inRouterLink: '/jitr-details'
         }
       },
-      { headerName: 'JITR Date', field: 'jitrDate', sortable: true, filter: 'agTextColumnFilter',
+      { headerName: 'JITR Date', field: 'jitrDate', sortable: true, filter: 'agDateColumnFilter',
         cellRenderer: this.dateFormatter
       },
       { headerName: 'Number Of FTE', field: 'numberOfFTE', sortable: true, filter: 'agNumberColumnFilter' },
@@ -53,7 +53,7 @@ export class JitrListComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.gridColumnApi;
+    this.gridColumnApi = params.columnApi;
     this.jitrService.getJitrsList().subscribe(data => {
       params.api.setRowData(data);
       this.totalJitrCount = this.getRowCount();
@@ -75,7 +75,11 @@ export class JitrListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridApi.setSortModel(null);
+    this.gridColumnApi.applyColumnState({
+      defaultState: {
+        sort: null
+      },
+    });
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }
