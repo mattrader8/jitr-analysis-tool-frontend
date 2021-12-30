@@ -69,11 +69,7 @@ export class JitrPositionsListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridColumnApi.applyColumnState({
-      defaultState: {
-        sort: null
-      },
-    })
+    this.gridColumnApi.resetColumnState();
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }

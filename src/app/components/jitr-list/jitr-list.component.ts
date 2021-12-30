@@ -64,7 +64,7 @@ export class JitrListComponent implements OnInit {
           }
         }
       },
-      { headerName: 'Number Of FTE', field: 'numberOfFTE', sortable: true, filter: 'agNumberColumnFilter' },
+      { headerName: 'Number of FTE', field: 'numberOfFTE', sortable: true, filter: 'agNumberColumnFilter' },
       { headerName: 'JITR Status', field: 'jitrStatus.statusDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'JITR Rating', field: 'jitrRating.ratingDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'JITR Organization', field: 'jitrOrganization.jitrOrganizationName', sortable: true, filter: 'agTextColumnFilter' }
@@ -95,11 +95,7 @@ export class JitrListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridColumnApi.applyColumnState({
-      defaultState: {
-        sort: null
-      },
-    });
+    this.gridColumnApi.resetColumnState();
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }
