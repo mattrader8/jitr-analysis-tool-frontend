@@ -5,30 +5,19 @@
     gap: 1em;
   }
   
-  .header {
+.header {
     text-align: center;
-  }
+}
 
-  .btn {
-    align-self: center;
-    border: none;
-    color: white;
-    background-color: darkgrey;
-    padding: 6px 12px;
-    font-size: 20px;
-    cursor: pointer;
-    display: inline-block;
-  }
+.return-home {
+    text-align: center;
+}
 
-  .btn:hover {
-      background: gray;
-  }
+.status {
+color: rgb(206, 33, 43);
+}
 
-  .status {
-    color: rgb(206, 33, 43);
-  }
-  
-  .return-home-button:hover {
-    background: gray;
-    cursor: pointer;
-  }
+.return-home-button:hover {
+background: gray;
+cursor: pointer;
+}
