@@ -42,6 +42,7 @@ import { AdminPositionListComponent } from './components/admin-position-list/adm
 import { UpdateJitrDialogComponent } from './components/update-jitr-dialog/update-jitr-dialog.component';
 import { IconRendererComponent } from './components/icon-renderer/icon-renderer.component';
 import { UpdatePositionDialogComponent } from './components/update-position-dialog/update-position-dialog.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { UpdatePositionDialogComponent } from './components/update-position-dial
     UpdateJitrDialogComponent,
     IconRendererComponent,
     UpdatePositionDialogComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,8 @@ export class JitrDetailsComponent implements OnInit {
   displayJitrInfo() {
     this.jitrService.getJitrByNumber(this.jitrNumber).subscribe(data => {
       this.jitr = data;
-    });
+    },
+    error => this.router.navigate(['404']));
   }
 
   returnToJITRList() {
