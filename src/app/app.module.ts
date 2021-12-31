@@ -44,6 +44,13 @@ import { IconRendererComponent } from './components/icon-renderer/icon-renderer.
 import { UpdatePositionDialogComponent } from './components/update-position-dialog/update-position-dialog.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
+// Directive imports
+
+import { JitrNumberValidatorDirective } from './shared/jitr-number-validator.directive';
+import { NumberOfFTEValidatorDirective } from './shared/number-of-fte-validator.directive';
+import { PraxisEstimatedCostValidatorDirective } from './shared/praxis-estimated-cost-validator.directive';
+import { WinningPrimeEstimatedCostValidatorDirective } from './shared/winning-prime-estimated-cost-validator.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +70,10 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
     IconRendererComponent,
     UpdatePositionDialogComponent,
     NotFoundPageComponent,
+    JitrNumberValidatorDirective,
+    NumberOfFTEValidatorDirective,
+    PraxisEstimatedCostValidatorDirective,
+    WinningPrimeEstimatedCostValidatorDirective
   ],
   imports: [
     BrowserModule,

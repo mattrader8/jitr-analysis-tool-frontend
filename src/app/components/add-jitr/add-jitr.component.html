@@ -7,11 +7,14 @@
     <mat-form-field class="mat-form">
       <mat-label>JITR Number</mat-label>
       <input matNativeControl required min="0" matInput type="number" id="jitrNumber"
-      [(ngModel)]="jitr.jitrNumber" #jitrNumber="ngModel" name="jitrNumber">
+      [(ngModel)]="jitr.jitrNumber" #jitrNumber="ngModel" name="jitrNumber" jitr-number-validator>
     </mat-form-field>
     <div *ngIf="jitrNumber.touched && jitrNumber.invalid" class="error-message">
       <div *ngIf="jitrNumber.errors?.required">
         JITR Number is required.
+      </div>
+      <div *ngIf="jitrNumber.errors.InvalidJitrNumber">
+        JITR Number cannot be less than 0.
       </div>
     </div>
     <br>
@@ -33,11 +36,14 @@
     <mat-form-field>
       <mat-label>Number of FTE</mat-label>
       <input matNativeControl required min="0" matInput type="number" id="numberOfFTE"
-      [(ngModel)]="jitr.numberOfFTE" #numberOfFTE="ngModel" name="numberOfFTE">
+      [(ngModel)]="jitr.numberOfFTE" #numberOfFTE="ngModel" name="numberOfFTE" number-of-fte-validator>
     </mat-form-field>
     <div *ngIf="numberOfFTE.touched && numberOfFTE.invalid" class="error-message">
       <div *ngIf="numberOfFTE.errors?.required">
         Number of FTE is required.
+      </div>
+      <div *ngIf="numberOfFTE.errors.InvalidNumberOfFTE">
+        Number of FTE cannot be less than 1.
       </div>
     </div>
     <br>
@@ -78,9 +84,12 @@
     <mat-form-field>
       <mat-label>Praxis Estimated Cost</mat-label> <mat-icon matTooltip="Leave blank if cost is unknown">help_outline</mat-icon>
       <input matInput type="number" min="0" id="praxisEstimatedCost"
-      [(ngModel)]="jitr.praxisEstimatedCost" #praxisEstimatedCost="ngModel" name="praxisEstimatedCost">
+      [(ngModel)]="jitr.praxisEstimatedCost" #praxisEstimatedCost="ngModel" name="praxisEstimatedCost" praxis-estimated-cost-validator>
     </mat-form-field>
     <div *ngIf="praxisEstimatedCost.touched && praxisEstimatedCost.invalid" class="error-message">
+      <div *ngIf="praxisEstimatedCost.errors.InvalidPraxisEstimatedCost">
+        Estimated Cost cannot be less than 0.
+      </div>
     </div>
     <br>
 
@@ -88,9 +97,12 @@
     <mat-form-field>
       <mat-label>Winning Prime Estimated Cost</mat-label> <mat-icon matTooltip="Leave blank if cost is unknown or JITR Status is 'Awarded'">help_outline</mat-icon>
       <input matInput type="number" min="0" id="winningPrimeEstimatedCost"
-      [(ngModel)]="jitr.winningPrimeEstimatedCost" #winningPrimeEstimatedCost="ngModel" name="winningPrimeEstimatedCost">
+      [(ngModel)]="jitr.winningPrimeEstimatedCost" #winningPrimeEstimatedCost="ngModel" name="winningPrimeEstimatedCost" winning-prime-estimated-cost-validator>
     </mat-form-field>
     <div *ngIf="winningPrimeEstimatedCost.touched && winningPrimeEstimatedCost.invalid" class="error-message">
+      <div *ngIf="winningPrimeEstimatedCost.errors.InvalidWinningPrimeEstimatedCost"> 
+        Estimated Cost cannot be less than 0.
+      </div>
     </div>
     <br>
 
