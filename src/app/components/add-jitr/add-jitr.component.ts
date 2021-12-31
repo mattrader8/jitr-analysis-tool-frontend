@@ -51,7 +51,13 @@ export class AddJitrComponent implements OnInit {
   }
 
   onCancel(form: NgForm) {
-    form.reset();
+    if(form.untouched) {
+      alert("No JITR data was entered.");
+    } else {
+      if(confirm("Are you sure you want to cancel?")) {
+        form.reset();
+      }
+    }
   }
 
   getJitrStatuses() {
