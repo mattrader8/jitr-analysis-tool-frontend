@@ -73,7 +73,7 @@ export class JitrDetailsPositionsListComponent implements OnInit {
     this.jitrPositionsService.getJitrPositionsByJitrNumber(this.jitrNumber).subscribe(data => {
       params.api.setRowData(data);
       this.totalPositionCount = this.getRowCount();
-      this.positionPercent = this.getPercent();
+      this.getPercent();
     })
     params.api.sizeColumnsToFit();
   }
@@ -102,8 +102,12 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   }
 
   getPercent() {
-    let rowCount = this.getRowCount(); 
-    this.positionPercent = Math.round((rowCount / this.totalPositionCount) * 100);
+    let rowCount = this.getRowCount();
+    if (rowCount == 0) {
+      this.positionPercent = 0;
+    } else {
+      this.positionPercent = Math.round((rowCount / this.totalPositionCount) * 100);
+    }
     return this.positionPercent;
   }
 

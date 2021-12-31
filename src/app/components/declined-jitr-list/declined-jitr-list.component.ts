@@ -72,7 +72,7 @@ export class DeclinedJitrListComponent implements OnInit {
     this.jitrService.getDeclinedJitrs().subscribe(data => {
       params.api.setRowData(data);
       this.totalJitrCount = this.getRowCount();
-      this.jitrPercent = this.getPercent();
+      this.getPercent();
     })
     params.api.sizeColumnsToFit();
     this.getAverageCostDifference();
@@ -111,8 +111,12 @@ export class DeclinedJitrListComponent implements OnInit {
   }
 
   getPercent() {
-    let rowCount = this.getRowCount(); 
-    this.jitrPercent = Math.round((rowCount / this.totalJitrCount) * 100);
+    let rowCount = this.getRowCount();
+    if (rowCount == 0) {
+      this.jitrPercent = 0;
+    } else {
+      this.jitrPercent = Math.round((rowCount / this.totalJitrCount) * 100);
+    }
     return this.jitrPercent;
   }
 

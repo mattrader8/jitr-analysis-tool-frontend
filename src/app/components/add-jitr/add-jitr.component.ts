@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { JitrOrganization } from 'src/app/models/jitr-organization.model';
 import { JitrRating } from 'src/app/models/jitr-rating.model';
@@ -21,6 +21,7 @@ export class AddJitrComponent implements OnInit {
   jitrStatuses: JitrStatus[];
   jitrRatings: JitrRating[];
   jitrOrganizations: JitrOrganization[];
+  formBuilder: FormBuilder;
   
   constructor(private jitrService: JitrService,
     private jitrStatusService: JitrStatusService,
@@ -40,7 +41,6 @@ export class AddJitrComponent implements OnInit {
     this.jitrService.addJitr(this.jitr).subscribe(data => {
       console.log(data);
       alert("Successfully added JITR.");
-      location.reload();
     },
     error => alert("Unable to add JITR."));
   }

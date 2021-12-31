@@ -77,7 +77,7 @@ export class JitrListComponent implements OnInit {
     this.jitrService.getJitrsList().subscribe(data => {
       params.api.setRowData(data);
       this.totalJitrCount = this.getRowCount();
-      this.jitrPercent = this.getPercent();
+      this.getPercent();
     });
     params.api.sizeColumnsToFit();
   }
@@ -111,7 +111,11 @@ export class JitrListComponent implements OnInit {
 
   getPercent() {
     let rowCount = this.getRowCount(); 
-    this.jitrPercent = Math.round((rowCount / this.totalJitrCount) * 100);
+    if (rowCount == 0) {
+      this.jitrPercent = 0;
+    } else {
+      this.jitrPercent = Math.round((rowCount / this.totalJitrCount) * 100);
+    }
     return this.jitrPercent;
   }
 
