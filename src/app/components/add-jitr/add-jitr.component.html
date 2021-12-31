@@ -111,7 +111,9 @@
 
     <br>
     <br>
-    <button mat-button type="button" class="cancel-button" (click)="onCancel(addJitrForm)">Cancel</button>
-    <button mat-button class="submit-button" [disabled]="addJitrForm.invalid">Submit</button>
+    <div class="form-buttons">
+      <button mat-button type="button" class="cancel-button" (click)="onCancel(addJitrForm)">Cancel</button>
+      <button mat-button class="submit-button" [disabled]="addJitrForm.invalid">Submit</button>
+    </div>
   </form>
 </div>
