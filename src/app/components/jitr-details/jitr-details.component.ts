@@ -5,7 +5,6 @@ import { Jitr } from 'src/app/models/jitr.model';
 import { JitrService } from 'src/app/services/jitr.service';
 import { UpdateJitrDialogComponent } from '../update-jitr-dialog/update-jitr-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-jitr-details',

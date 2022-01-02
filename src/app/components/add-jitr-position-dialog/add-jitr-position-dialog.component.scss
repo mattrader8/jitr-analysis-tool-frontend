@@ -1,13 +1,5 @@
-.form {
-    display: block;
-    text-align: center;
-}
-
-.update-jitr-form {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+.actions {
+    float: right;
 }
 
 .submit-button {
@@ -26,8 +18,4 @@
 
 .cancel-button:hover {
     background: rgb(170, 0, 0);
-}
-
-.error-message {
-    color: rgb(206, 33, 43);
 }

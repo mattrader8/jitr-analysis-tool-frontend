@@ -50,6 +50,7 @@ import { JitrNumberValidatorDirective } from './shared/jitr-number-validator.dir
 import { NumberOfFTEValidatorDirective } from './shared/number-of-fte-validator.directive';
 import { PraxisEstimatedCostValidatorDirective } from './shared/praxis-estimated-cost-validator.directive';
 import { WinningPrimeEstimatedCostValidatorDirective } from './shared/winning-prime-estimated-cost-validator.directive';
+import { AddJitrPositionDialogComponent } from './components/add-jitr-position-dialog/add-jitr-position-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { WinningPrimeEstimatedCostValidatorDirective } from './shared/winning-pr
     JitrNumberValidatorDirective,
     NumberOfFTEValidatorDirective,
     PraxisEstimatedCostValidatorDirective,
-    WinningPrimeEstimatedCostValidatorDirective
+    WinningPrimeEstimatedCostValidatorDirective,
+    AddJitrPositionDialogComponent
   ],
   imports: [
     BrowserModule,

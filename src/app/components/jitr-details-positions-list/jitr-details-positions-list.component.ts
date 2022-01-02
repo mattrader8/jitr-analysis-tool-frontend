@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent } from 'ag-grid-community';
@@ -8,6 +9,7 @@ import { Jitr } from 'src/app/models/jitr.model';
 import { Position } from 'src/app/models/position.model';
 import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { PositionService } from 'src/app/services/position.service';
+import { AddJitrPositionDialogComponent } from '../add-jitr-position-dialog/add-jitr-position-dialog.component';
 import { IconRendererComponent } from '../icon-renderer/icon-renderer.component';
 
 @Component({
@@ -47,13 +49,14 @@ export class JitrDetailsPositionsListComponent implements OnInit {
 
   constructor(private jitrPositionsService: JitrPositionsService,
     private positionService: PositionService,
+    private dialog: MatDialog,
     private titleService: Title) {
       this.titleService.setTitle("JITR Details");
   }
 
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: 'LCAT Description', field: 'position.lcatDescription', sort: 'asc', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'LCAT Description', field: 'position.lcatDescription', checkboxSelection: true, sort: 'asc', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Actions', 
         cellRendererFramework:  IconRendererComponent,
@@ -179,5 +182,17 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   generateUUID() {
     this.jitrPositionID = UUID.UUID();
     return this.jitrPositionID;
+  }
+
+  openAddJITRPositionDialog() {
+    let addJitrPositionDialog = this.dialog.open(AddJitrPositionDialogComponent, {
+      data: {
+        jitr: this.jitr,
+        positionCount: this.positionCount,
+      },
+    });
+    addJitrPositionDialog.afterClosed().subscribe(result => {
+      location.reload();
+    })
   }
 }
