@@ -42,7 +42,7 @@
       <div *ngIf="numberOfFTE.errors?.required">
         Number of FTE is required.
       </div>
-      <div *ngIf="numberOfFTE.errors.InvalidNumberOfFTE">
+      <div *ngIf="!(numberOfFTE.value == null) && numberOfFTE.errors.InvalidNumberOfFTE">
         Number of FTE cannot be less than 1.
       </div>
     </div>
