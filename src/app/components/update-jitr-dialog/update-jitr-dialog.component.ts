@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { JitrOrganization } from 'src/app/models/jitr-organization.model';
 import { JitrRating } from 'src/app/models/jitr-rating.model';
@@ -43,15 +44,16 @@ export class UpdateJitrDialogComponent implements OnInit {
     this.selectedJitrOrganization = this.jitr.jitrOrganization;
   }
 
-  updateJitr() {
-    if(confirm("Are you sure you want to update this JITR?")) {
+  updateJitr(updateJitrForm: NgForm) {
+    /*if(confirm("Are you sure you want to update this JITR?")) {
       this.jitrService.updateJitr(this.jitr.jitrNumber, this.jitr).subscribe(data => {
         console.log(data);
         alert("Successfully updated JITR.");
         location.reload();
       },
       error => alert("Unable to update JITR."));
-    }
+    }*/
+    console.log(updateJitrForm.form);
   }
 
   getJitrStatuses() {

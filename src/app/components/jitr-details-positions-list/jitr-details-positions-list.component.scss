@@ -17,6 +17,19 @@
     width: 575px;
 }
 
-.mat-icon {
+.add-icon {
     float: left;
+}
+
+.hidden-icons {
+    padding-left: 5px;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.nav-item-label {
+    padding-left: 5px;
+    font-weight: bold;
 }

@@ -1,9 +1,18 @@
 <h3> JITR Positions </h3>
 <br>
 <div>
+    <input type="text" placeholder="Search..." (keyup)="quickSearch()" [(ngModel)]="searchValue">
+    <button (click)="clearFilters()" class="btn"> Reset Filters </button>
+</div>
+<br>
+<div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
-            <mat-icon (click)="openAddJITRPositionDialog()" class="mat-icon" matTooltip="Add JITR Position">add_circle</mat-icon>   
+            <mat-icon (click)="openAddJITRPositionDialog()" class="add-icon" matTooltip="Add JITR Position">add_circle</mat-icon>
+            <div class="hidden-icons" *ngIf="isSelected">
+                <mat-icon (click)="openUpdatePositionDialog()" class="edit-icon" matTooltip="Edit JITR Position">edit</mat-icon>
+                <mat-icon (click)="deletePosition()" class="delete-icon" matTooltip="Delete JITR Position">delete</mat-icon>
+            </div>
         </ul>
     </nav>
 </div>
@@ -15,7 +24,10 @@
     class="ag-theme-alpine"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
-    rowSelection="multiple"
+    rowSelection="rowSelection"
+    [suppressRowClickSelection]="true"
+    (rowSelected)="onRowSelected($event)"
+    (selectionChanged)="onSelectionChanged($event)"
     [animateRows]="true"
     (gridReady)="onGridReady($event)"
     (filterChanged)="onFilterChanged($event)"

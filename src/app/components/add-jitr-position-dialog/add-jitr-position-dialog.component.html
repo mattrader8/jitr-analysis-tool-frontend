@@ -1,7 +1,8 @@
 <h1 mat-dialog-title>Add JITR Position</h1>
-<mat-form-field class="add-lcats">
+<mat-form-field class="add-lcats" autofocus="autofocus">
     <mat-label>LCAT</mat-label>
     <select matNativeControl [(ngModel)]="lcat" name="lcat" (ngModelChange)="onLcatChange($event)">
+        <option [ngValue]="undefined" selected hidden>Choose LCAT</option>
         <option *ngFor="let lcat of lcats"
         [ngValue]="lcat"> {{ lcat }}
         </option>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent } from 'ag-grid-community';
 import { UUID } from 'angular2-uuid';
 import { JitrPositions } from 'src/app/models/jitr-positions.model';
 import { Jitr } from 'src/app/models/jitr.model';
@@ -10,7 +9,7 @@ import { Position } from 'src/app/models/position.model';
 import { JitrPositionsService } from 'src/app/services/jitr-positions.service';
 import { PositionService } from 'src/app/services/position.service';
 import { AddJitrPositionDialogComponent } from '../add-jitr-position-dialog/add-jitr-position-dialog.component';
-import { IconRendererComponent } from '../icon-renderer/icon-renderer.component';
+import { UpdatePositionDialogComponent } from '../update-position-dialog/update-position-dialog.component';
 
 @Component({
   selector: 'app-jitr-details-positions-list',
@@ -45,6 +44,10 @@ export class JitrDetailsPositionsListComponent implements OnInit {
   lcatLevel: string;
   lcatLevels: string[];
 
+  isMaxFTE: boolean;
+
+  isSelected: boolean;
+
   rowData: JitrPositions[];
 
   constructor(private jitrPositionsService: JitrPositionsService,
@@ -58,14 +61,6 @@ export class JitrDetailsPositionsListComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'LCAT Description', field: 'position.lcatDescription', checkboxSelection: true, sort: 'asc', sortable: true, filter: 'agTextColumnFilter'},
       { headerName: 'LCAT Level Description', field: 'position.lcatLevelDescription', sortable: true, filter: 'agTextColumnFilter' },
-      { headerName: 'Actions', 
-        cellRendererFramework:  IconRendererComponent,
-        cellRendererParams: {
-          positionToUpdate: {
-            onCellClicked: (event: CellClickedEvent) => event.data,
-          }
-        }
-      }
     ];
     this.getLcats();
   }
@@ -97,6 +92,23 @@ export class JitrDetailsPositionsListComponent implements OnInit {
     this.gridColumnApi.resetColumnState();
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
+  }
+
+  onRowSelected(event) {
+    if (event.node.selected)
+    {
+      this.jitrPosition = event.node.data;
+      console.log(this.jitrPosition);
+    }
+    return this.isSelected = true;
+  }
+
+  onSelectionChanged(event) {
+    if (event.api.getSelectedNodes() == 0)
+    {
+      this.isSelected = false;
+    }
+    return this.isSelected;
   }
 
   getRowCount() {
@@ -179,6 +191,17 @@ export class JitrDetailsPositionsListComponent implements OnInit {
     });
   }
 
+  deletePosition() {
+    if(confirm("Are you sure you want to delete this JITR Position?")) {
+      this.jitrPositionsService.deleteJitrPositions(this.jitrPosition.jitrPositionID).subscribe(data => {
+        console.log(data);
+        alert("Successfully deleted JITR Position.");
+        location.reload();
+      },
+      error => alert("Unable to delete JITR Position."));
+    }
+  }
+
   generateUUID() {
     this.jitrPositionID = UUID.UUID();
     return this.jitrPositionID;
@@ -194,5 +217,14 @@ export class JitrDetailsPositionsListComponent implements OnInit {
     addJitrPositionDialog.afterClosed().subscribe(result => {
       location.reload();
     })
+  }
+
+  openUpdatePositionDialog() {
+    this.dialog.open(UpdatePositionDialogComponent, {
+      data: {
+        jitrPosition: this.jitrPosition,
+      },
+    });
+    console.log(this.jitrPosition);
   }
 }
