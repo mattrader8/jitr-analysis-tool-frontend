@@ -15,6 +15,8 @@ export class JitrDetailsComponent implements OnInit {
   
   jitrNumber: number;
   jitr: Jitr = new Jitr;
+
+  jitrDate: Date;
   
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -33,7 +35,8 @@ export class JitrDetailsComponent implements OnInit {
   displayJitrInfo() {
     this.jitrService.getJitrByNumber(this.jitrNumber).subscribe(data => {
       this.jitr = data;
-    });
+    },
+    error => this.router.navigate(['404']));
   }
 
   returnToJITRList() {

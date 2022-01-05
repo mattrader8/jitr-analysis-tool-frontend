@@ -24,6 +24,10 @@
     float: right;
 }
 
+.form-buttons {
+    text-align: center;
+}
+
 .submit-button {
     margin-left: 10px;
     border: none;
@@ -40,7 +44,7 @@
 }
 
 .cancel-button {
-    margin-left: 10px;
+    margin-left: -5px;
     border: none;
     color: white;
     background-color: rgb(206, 33, 43);
@@ -52,4 +56,8 @@
 
 .cancel-button:hover {
     background: rgb(170, 0, 0);
+}
+
+.error-message {
+    color: rgb(206, 33, 43);
 }

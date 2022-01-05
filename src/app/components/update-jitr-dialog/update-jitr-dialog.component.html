@@ -1,63 +1,123 @@
 <h1 mat-dialog-title>Update JITR</h1>
 <mat-dialog-content>
+
+<div class="form">
+    <form #updateJitrForm="ngForm" class="update-jitr-form">
+        <!--JITR Number Input-->
     <mat-form-field class="mat-form">
         <mat-label>JITR Number</mat-label>
-        <input matNativeControl placeholder="{{ data.jitr.jitrNumber }}" disabled matInput type="text" id="jitrNumber"
+        <input matNativeControl placeholder="{{ data.jitr.jitrNumber }}" disabled matInput type="number" id="jitrNumber"
         [(ngModel)]="data.jitr.jitrNumber" name="jitrNumber">
     </mat-form-field>
     <br>
+
+    <!--JITR Date Input-->
     <mat-form-field>
         <mat-label>JITR Date</mat-label>
         <input matNativeControl placeholder="{{ data.jitr.jitrDate }}" required matInput type="date" id="jitrDate"
-        [(ngModel)]="data.jitr.jitrDate" name="jitrDate">
+        [(ngModel)]="data.jitr.jitrDate" #jitrDate="ngModel" name="jitrDate">
     </mat-form-field>
+    <div *ngIf="jitrDate.touched && jitrDate.invalid" class="error-message">
+        <div *ngIf="jitrDate.errors?.required">
+          JITR Date is required.
+        </div>
+    </div>
     <br>
+
+    <!--Number of FTE Input-->
     <mat-form-field>
         <mat-label>Number of FTE</mat-label>
-        <input matNativeControl placeholder="{{ data.jitr.numberOfFTE }}" required matInput type="text" id="numberOfFTE"
-        [(ngModel)]="data.jitr.numberOfFTE" name="numberOfFTE">
+        <input matNativeControl placeholder="{{ data.jitr.numberOfFTE }}" required min="0" matInput type="number" id="numberOfFTE"
+        [(ngModel)]="data.jitr.numberOfFTE" #numberOfFTE="ngModel" name="numberOfFTE" number-of-fte-validator>
     </mat-form-field>
+    <div *ngIf="numberOfFTE.touched && numberOfFTE.invalid" class="error-message">
+        <div *ngIf="numberOfFTE.errors?.required">
+            Number of FTE is required.
+        </div>
+        <div *ngIf="!(numberOfFTE.value == null) && numberOfFTE.errors.InvalidNumberOfFTE">
+            Number of FTE cannot be less than 1.
+        </div>
+    </div>
     <br>
+
+    <!--JITR Status Input-->
     <mat-form-field>
         <mat-label>JITR Status</mat-label>
-        <select matNativeControl required [(ngModel)]="selectedJitrStatus.jitrStatusID" name="jitrStatus">
+        <select matNativeControl required [(ngModel)]="selectedJitrStatus.jitrStatusID" #jitrStatus="ngModel" name="jitrStatus">
             <option *ngFor="let jitrStatus of jitrStatuses"
                 [ngValue]="jitrStatus.jitrStatusID"> {{ jitrStatus.statusDescription }}
             </option>
         </select>
     </mat-form-field>
+    <div *ngIf="jitrStatus.touched && jitrStatus.invalid" class="error-message">
+        <div *ngIf="jitrStatus.errors?.required">
+          JITR Status is required.
+        </div>
+    </div>
     <br>
+
+    <!--JITR Rating Input-->
     <mat-form-field>
         <mat-label>JITR Rating</mat-label>
-        <select matNativeControl required [(ngModel)]="selectedJitrRating.jitrRatingID" name="jitrRating">
+        <select matNativeControl required [(ngModel)]="selectedJitrRating.jitrRatingID" #jitrRating="ngModel" name="jitrRating">
             <option *ngFor="let jitrRating of jitrRatings" 
                 [ngValue]="jitrRating.jitrRatingID"> {{ jitrRating.ratingDescription }}
             </option>
         </select>
     </mat-form-field>
+    <div *ngIf="jitrRating.touched && jitrRating.invalid" class="error-message">
+        <div *ngIf="jitrRating.errors?.required">
+          JITR Rating is required.
+        </div>
+    </div>
     <br>
+
+    <!--Praxis Estimated Cost Input-->
     <mat-form-field>
         <mat-label>Praxis Estimated Cost</mat-label>
-        <input placeholder="{{ data.jitr.praxisEstimatedCost }}" matInput type="text" id="praxisEstimatedCost"
-        [(ngModel)]="data.jitr.praxisEstimatedCost" name="praxisEstimatedCost">
+        <input placeholder="{{ data.jitr.praxisEstimatedCost }}" matInput type="text" min="0" id="praxisEstimatedCost"
+        [(ngModel)]="data.jitr.praxisEstimatedCost" #praxisEstimatedCost="ngModel" name="praxisEstimatedCost" praxis-estimated-cost-validator>
     </mat-form-field>
+    <div *ngIf="praxisEstimatedCost.touched && praxisEstimatedCost.invalid" class="error-message">
+        <div *ngIf="praxisEstimatedCost.errors.InvalidPraxisEstimatedCost">
+          Estimated Cost cannot be less than 0.
+        </div>
+    </div>
     <br>
+
+    <!--Winning Prime Estimated Cost Input-->
     <mat-form-field>
         <mat-label>Winning Prime Estimated Cost</mat-label>
-        <input placeholder="{{ data.jitr.winningPrimeEstimatedCost }}" matInput type="text" id="winningPrimeEstimatedCost"
-        [(ngModel)]="data.jitr.winningPrimeEstimatedCost" name="winningPrimeEstimatedCost">
+        <input placeholder="{{ data.jitr.winningPrimeEstimatedCost }}" matInput type="text" min="0" id="winningPrimeEstimatedCost"
+        [(ngModel)]="data.jitr.winningPrimeEstimatedCost" #winningPrimeEstimatedCost="ngModel" name="winningPrimeEstimatedCost" winning-prime-estimated-cost-validator>
     </mat-form-field>
+    <div *ngIf="winningPrimeEstimatedCost.touched && winningPrimeEstimatedCost.invalid" class="error-message">
+        <div *ngIf="winningPrimeEstimatedCost.errors.InvalidWinningPrimeEstimatedCost"> 
+          Estimated Cost cannot be less than 0.
+        </div>
+    </div>
     <br>
+
+    <!--JITR Organization Input-->
     <mat-form-field>
         <mat-label>JITR Organization</mat-label>
-        <select matNativeControl required [(ngModel)]="selectedJitrOrganization.jitrOrganizationID" name="jitrOrganization">
+        <select matNativeControl required [(ngModel)]="selectedJitrOrganization.jitrOrganizationID" #jitrOrganization="ngModel" name="jitrOrganization">
             <option *ngFor="let jitrOrganization of jitrOrganizations" 
                 [ngValue]="jitrOrganization.jitrOrganizationID"> {{ jitrOrganization.jitrOrganizationName }}
             </option>
         </select>
     </mat-form-field>
+    <div *ngIf="jitrOrganization.touched && jitrOrganization.invalid" class="error-message">
+        <div *ngIf="jitrOrganization.errors?.required">
+          JITR Organization is required.
+        </div>
+    </div>
+    </form>
+</div>
+
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button type="button" class="cancel-button" (click)="cancelUpdate()">Cancel</button>
-    <button mat-button class="submit-button" (click)="updateJitr()">Save</button>
+    <button mat-button class="submit-button" (click)="updateJitr(updateJitrForm)">Save</button>
+    <!--[disabled]="updateJitrForm.invalid"-->
 </mat-dialog-actions>

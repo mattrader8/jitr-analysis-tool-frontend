@@ -17,6 +17,31 @@
     width: 575px;
 }
 
-.mat-icon {
+.add-icon {
     float: left;
+    cursor: pointer;
+}
+
+.edit-icon {
+    padding-left: 7px;
+}
+
+.edit-label {
+    padding-left: 7px;
+    font-weight: bold;
+}
+
+.delete-label {
+    padding-left: -10px;
+    font-weight: bold;
+}
+
+.add-label {
+    padding-left: 2px;
+    font-weight: bold;
+}
+
+.hidden-icons {
+    display: flex;
+    flex-direction: row;
 }

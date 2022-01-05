@@ -1,0 +1,23 @@
+.not-found-page {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  
+.header {
+    text-align: center;
+}
+
+.return-home {
+    text-align: center;
+}
+
+.status {
+color: rgb(206, 33, 43);
+}
+
+.return-home-button:hover {
+background: gray;
+cursor: pointer;
+}

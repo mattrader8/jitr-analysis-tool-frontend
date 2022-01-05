@@ -47,11 +47,11 @@ export class JitrPositionsListComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.gridColumnApi;
+    this.gridColumnApi = params.columnApi;
     this.jitrPositionsService.getJitrPositionsList().subscribe(data => {
       params.api.setRowData(data);
       this.totalPositionCount = this.getRowCount();
-      this.positionPercent = this.getPercent();
+      this.getPercent();
     })
     params.api.sizeColumnsToFit();
   }
@@ -69,7 +69,7 @@ export class JitrPositionsListComponent implements OnInit {
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
-    this.gridApi.setSortModel(null);
+    this.gridColumnApi.resetColumnState();
     this.gridApi.setQuickFilter(null);
     this.searchValue = '';
   }
@@ -84,8 +84,12 @@ export class JitrPositionsListComponent implements OnInit {
   }
 
   getPercent() {
-    let rowCount = this.getRowCount(); 
-    this.positionPercent = Math.round((rowCount / this.totalPositionCount) * 100);
+    let rowCount = this.getRowCount();
+    if (rowCount == 0) {
+      this.positionPercent = 0;
+    } else {
+      this.positionPercent = Math.round((rowCount / this.totalPositionCount) * 100);
+    }
     return this.positionPercent;
   }
 }

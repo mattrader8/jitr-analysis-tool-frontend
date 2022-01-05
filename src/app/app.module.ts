@@ -40,8 +40,16 @@ import { JitrPositionsListComponent } from './components/jitr-positions-list/jit
 import { JitrDetailsPositionsListComponent } from './components/jitr-details-positions-list/jitr-details-positions-list.component';
 import { AdminPositionListComponent } from './components/admin-position-list/admin-position-list.component';
 import { UpdateJitrDialogComponent } from './components/update-jitr-dialog/update-jitr-dialog.component';
-import { IconRendererComponent } from './components/icon-renderer/icon-renderer.component';
 import { UpdatePositionDialogComponent } from './components/update-position-dialog/update-position-dialog.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+
+// Directive imports
+
+import { JitrNumberValidatorDirective } from './shared/jitr-number-validator.directive';
+import { NumberOfFTEValidatorDirective } from './shared/number-of-fte-validator.directive';
+import { PraxisEstimatedCostValidatorDirective } from './shared/praxis-estimated-cost-validator.directive';
+import { WinningPrimeEstimatedCostValidatorDirective } from './shared/winning-prime-estimated-cost-validator.directive';
+import { AddJitrPositionDialogComponent } from './components/add-jitr-position-dialog/add-jitr-position-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +67,13 @@ import { UpdatePositionDialogComponent } from './components/update-position-dial
     JitrDetailsPositionsListComponent,
     AdminPositionListComponent,
     UpdateJitrDialogComponent,
-    IconRendererComponent,
     UpdatePositionDialogComponent,
+    NotFoundPageComponent,
+    JitrNumberValidatorDirective,
+    NumberOfFTEValidatorDirective,
+    PraxisEstimatedCostValidatorDirective,
+    WinningPrimeEstimatedCostValidatorDirective,
+    AddJitrPositionDialogComponent
   ],
   imports: [
     BrowserModule,
