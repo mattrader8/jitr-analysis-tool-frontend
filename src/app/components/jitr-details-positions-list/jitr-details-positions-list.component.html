@@ -8,10 +8,15 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
-            <mat-icon (click)="openAddJITRPositionDialog()" class="add-icon" matTooltip="Add JITR Position">add_circle</mat-icon>
+            <div class="displayed-icons">
+                <mat-icon (click)="openAddJITRPositionDialog()" class="add-icon" matTooltip="Add JITR Position">add_circle</mat-icon>
+                <label class="add-label">New</label>
+            </div>
             <div class="hidden-icons" *ngIf="isSelected">
                 <mat-icon (click)="openUpdatePositionDialog()" class="edit-icon" matTooltip="Edit JITR Position">edit</mat-icon>
+                <label class="edit-label">Edit</label> &nbsp;&nbsp;
                 <mat-icon (click)="deletePosition()" class="delete-icon" matTooltip="Delete JITR Position">delete</mat-icon>
+                <label class="delete-label">Delete</label>
             </div>
         </ul>
     </nav>
