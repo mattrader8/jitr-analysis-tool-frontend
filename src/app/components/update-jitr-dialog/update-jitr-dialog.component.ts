@@ -45,15 +45,14 @@ export class UpdateJitrDialogComponent implements OnInit {
   }
 
   updateJitr(updateJitrForm: NgForm) {
-    /*if(confirm("Are you sure you want to update this JITR?")) {
+    if(confirm("Are you sure you want to update this JITR?")) {
       this.jitrService.updateJitr(this.jitr.jitrNumber, this.jitr).subscribe(data => {
         console.log(data);
         alert("Successfully updated JITR.");
         location.reload();
       },
       error => alert("Unable to update JITR."));
-    }*/
-    console.log(updateJitrForm.form);
+    }
   }
 
   getJitrStatuses() {
