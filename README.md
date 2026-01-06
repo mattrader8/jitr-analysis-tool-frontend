@@ -1,27 +1,23 @@
-# JitrAnalysisTool
+# JITR Analysis Tool (Frontend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+## Overview
 
-## Development server
+This repository contains the **frontend** source code for a **web application** completed during my time at Praxis Engineering in **2021**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The project was designed to provide a simple analysis capability for Just-in-Time Requirement (JITR) proposal submissions. A JITR was a common acquisition strategy for one of the government agencies we supported. These proposal submissions included various metadata, such as response content (i.e., text), status, rating, etc. Users of this application were able to view a history of proposal submissions, filter based on metadata, and add, update, and delete submissions.
 
-## Code scaffolding
+**Purpose of this repository**:<br>
+This project is maintained on GitHub as a **reference implementation** showcasing my approach to REST API design and development within the Java Spring Boot framework. Note that evironment-specific configuration is required to run locally.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project Goals
+The primary goals of this project were to:
+- Design and develop a functional REST API implemented using the Java Spring Boot framework
+- Connect server-side code to an external relational database (i.e., MySQL)
+- Implement basic CRUD operations for application data
+- Gain experience with core Spring Boot features (e.g., beans, annotations, etc.)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Key Features
+ - Data models to map JITR data to server-side entities
+ - Repositories to manage data persistence and access, simplifying interactions with the database
+ - Services to handle the business logic of the server-side application
+ - RestControllers hosting the core methods of the overall API
