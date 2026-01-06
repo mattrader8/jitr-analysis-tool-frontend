@@ -11,13 +11,12 @@ This project is maintained on GitHub as a **reference implementation** showcasin
 
 ## Project Goals
 The primary goals of this project were to:
-- Design and develop a functional REST API implemented using the Java Spring Boot framework
-- Connect server-side code to an external relational database (i.e., MySQL)
-- Implement basic CRUD operations for application data
-- Gain experience with core Spring Boot features (e.g., beans, annotations, etc.)
+- Enable users to browse and inspect historical proposal submissions with intuitive UI elements
+- Give users quick insights into proposal trends and metadata patterns
+- Support interactive filtering and searching by key metadata fields
+- Demonstrate proficiency with modern frontend tooling
 
 ## Key Features
- - Data models to map JITR data to server-side entities
- - Repositories to manage data persistence and access, simplifying interactions with the database
- - Services to handle the business logic of the server-side application
- - RestControllers hosting the core methods of the overall API
+ - Proposal browsing, searching, and filtering via AG Grid (https://www.ag-grid.com/)
+ - Basic CRUD operations (e.g., create, read, update, delete)
+ - ...
