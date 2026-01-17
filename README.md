@@ -20,3 +20,19 @@ The primary goals of this project were to:
  - Proposal browsing, searching, and filtering via AG Grid (https://www.ag-grid.com/)
  - Basic CRUD operations (e.g., create, read, update, delete)
  - Administrative page to allow for advanced database administration
+
+## Design 
+The following section includes example documentation from the overall design process.
+
+Application Architecture
+
+<img width="857" height="560" alt="ProjectModel" src="https://github.com/user-attachments/assets/d8956132-5c47-4499-9913-5eba9f9e777d" />
+
+Database Entity Relationship Diagram (ERD)
+
+<img width="681" height="484" alt="JiTRAnalysisERDUpdate" src="https://github.com/user-attachments/assets/9e9d485f-e55d-4986-a88d-5e24dd57a006" />
+
+"Add JITR" Page
+
+<img width="1917" height="972" alt="AddJITRUI" src="https://github.com/user-attachments/assets/b4466383-964d-4691-a27b-96d575e853d2" />
+
