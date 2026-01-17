@@ -19,4 +19,4 @@ The primary goals of this project were to:
 ## Key Features
  - Proposal browsing, searching, and filtering via AG Grid (https://www.ag-grid.com/)
  - Basic CRUD operations (e.g., create, read, update, delete)
- - ...
+ - Administrative page to allow for advanced database administration
